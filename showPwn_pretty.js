@@ -189,7 +189,7 @@ function doIt() {
 		wow(top.frames, 0);
 	}
 	catch(err) {
-		txt="@pnd: Gmail Error: " + err.message + "\n";
+		txt="@pnd: Error: " + err.message + "\n";
 		alert(txt);
 	}
 	
