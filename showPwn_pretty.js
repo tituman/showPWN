@@ -1,7 +1,7 @@
 javascript: var b64pad = '';
 var chrsz = 8; 
-/*H contains all the forms included in nested frames*/
-var H = new Array(); 
+
+var inputArray = new Array();
 /*
 * 
 * v12: 
@@ -111,23 +111,33 @@ function binb2b64(binarray) {
     }
     return str;
 }
-var intArr = new Array; /* tiene ints*/
-
-/* fills H with all forms (many HTMLCollection's) */
-function wow(mFrames, n) 
-{
-    for (intArr[n] = 0; intArr[n] < mFrames.length; intArr[n]++) 
-	{    
-		if (mFrames[intArr[n]].document && mFrames[intArr[n]].document.forms) {
-            H.push(mFrames[intArr[n]].document.forms);
-        }
-        if (mFrames[intArr[n]].frames.length) {
-            wow(mFrames[intArr[n]].frames, n + 1);
-        }
+function getInputs(document){
+	var myInputs;
+    if (myInputs = document.getElementsByTagName('input')){
+		for (var i = 0; i < myInputs.length; ++i) {
+			inputArray.push(myInputs[i]);
+		}
     }
-    return;
 }
+
+
+function traverseFrames(document){
+	try{getInputs(document);}catch(e){console.log('ERROR: ',e);};
+	if (document){
+		var fs = document.getElementsByTagName('frame');
+		for (var i = 0; i < fs.length; ++i){
+			try{traverseFrames(fs[i].contentDocument);}catch(e){console.log('ERROR: ',e);};
+		}
+		fs = document.getElementsByTagName('iframe');
+		for (var i = 0; i < fs.length; ++i){
+			try{traverseFrames(fs[i].contentDocument);}catch(e){console.log('ERROR: ',e);};
+		}
+	}
+}
+
 function doIt() {
+
+/* get info about which domain should the password be calculated with */
     var domain = '';
 	var flagShow = false;
 	var flagWritePWN = false;
@@ -177,155 +187,71 @@ function doIt() {
 				
     var p; /* string containing calculated password */
     var i = 0, j = 0; /* iterators */ 
-	
-	var theseForms = document.forms;
-	var theseInputs = document.getElementsByTagName('input');
 
-        /*H has all the forms of all the frames. H is an array of HTMLCollection  */
-    H.push(theseForms);
-	
-	/* fills H with all forms (many HTMLCollection's) */
-    try {
-		wow(top.frames, 0);
-	}
-	catch(err) {
-		txt="@pnd: Error: " + err.message + "\n";
-		alert(txt);
-	}
+	/* find interesting elements */
+	traverseFrames(document);
 	
 	var wrotePWAtLeastOnce = false;	
 	var wrotePWAtLeastOnceSecondChance = false;
-	
-	/* H is array of HTMLCollection */
-    for (var k = 0; k < H.length; k++) {
-		/* F contains an HTMLCollection */
-        F = H[k];
-		if (F == null || F=='' || F==0) {continue;}
-        for (i = 0; i < F.length; i++) {
-			if (F[i] == null || F[i] =='' || F[i] == 0){ continue; }
-			/* E contains elements of HTMLCollection, type is HTMLFormControlsCollection*/
-            E = F[i].elements;
-			if (F[i].elements == null || F[i].elements =='' || F[i].elements == 0){ continue; }
-            for (j = 0; j < E.length; j++) {
-				flagWritePWN = false;
-				if (E[j] == null || E[j] =='' || E[j] == 0){ continue; }
-				/* D is element of HTMLFormControlsCollection (inputs) */
-                D = E[j];
-                if (D.type == 'password') {
-                    if (D.value || D.value != '') {
-                        p = b64_sha1(D.value + ':' + domain).substr(0, 8) + '1a';
-                        if (addOnes) {
-                            p = p + '11';
-						}
+			
+	for (i = 0; i < inputArray.length; i++) {
+		flagWritePWN = false;
+		if (inputArray[i] == null || inputArray[i] =='' || inputArray[i] == 0){ continue; }
+		/* D is element of inputArray (inputs) */
+		D = inputArray[i];
+		if (D.type == 'password') {
+			if (D.value || D.value != '') {
+				p = b64_sha1(D.value + ':' + domain).substr(0, 8) + '1a';
+				if (addOnes) {
+					p = p + '11';
+				}
 /*1 REMOVE-->  */
-						flagWritePWN = window.prompt(domain, p);
+				flagWritePWN = window.prompt(domain, p);
 /* <--REMOVE 2*/
-						if (flagShow) {
-							if (flagWritePWN) {
-								D.value = p;
-								D.focus();
-								D.style.background = '#FF69B4';
-								wrotePWAtLeastOnce = true;
-							}
-						}else {
-							D.value = p;
-							D.focus();
-							D.style.background = '#FF69B4';
-							wrotePWAtLeastOnce = true;
-						}
-                    }
-                }
-                if (D.type == 'text') {
-                    if (D.value || D.value != '') {
-                        if (D.name.toUpperCase().indexOf('PASSWORD') != -1 || D.name.toUpperCase().indexOf('PASSWD') != -1) {
-                            p = b64_sha1(D.value + ':' + domain).substr(0, 8) + '1a';
-                            if (addOnes) {
-                                p = p + '11';
-							}
-/*1 REMOVE-->  */
-						flagWritePWN = window.prompt(domain, p);
-/* <--REMOVE 2*/
-						if (flagShow) {
-							if (flagWritePWN) {
-								D.value = p;
-								D.focus();
-								D.style.background = '#FF69B4';
-								wrotePWAtLeastOnce = true;
-							}
-						}else {
-							D.value = p;
-							D.focus();
-							D.style.background = '#FF69B4';
-							wrotePWAtLeastOnce = true;
-						}
-                        }
-                    }
-                }
-            }
-        }
-    }
-	
-	/* try with the inputs strategy */
-	if (wrotePWAtLeastOnce == false) {
-		for (var i = 0; i < theseInputs.length; ++i) {
-			/* figure out what to do here */
-			flagWritePWN = false;
-			if (theseInputs[i].type == 'password') {
-				if (theseInputs[i].value || theseInputs[i].value != '') {
-					p = b64_sha1(theseInputs[i].value + ':' + domain).substr(0, 8) + '1a';
+				if (flagShow) {
+					if (flagWritePWN) {
+						D.value = p;
+						D.focus();
+						D.style.background = '#FF69B4';
+						wrotePWAtLeastOnce = true;
+					}
+				}else {
+					D.value = p;
+					D.focus();
+					D.style.background = '#FF69B4';
+					wrotePWAtLeastOnce = true;
+				}
+			}
+		}
+		if (D.type == 'text') {
+			if (D.value || D.value != '') {
+				if (D.name.toUpperCase().indexOf('PASSWORD') != -1 || D.name.toUpperCase().indexOf('PASSWD') != -1) {
+					p = b64_sha1(D.value + ':' + domain).substr(0, 8) + '1a';
 					if (addOnes) {
 						p = p + '11';
 					}
 /*1 REMOVE-->  */
-					flagWritePWN = window.prompt(domain, p);
+				flagWritePWN = window.prompt(domain, p);
 /* <--REMOVE 2*/
-					if (flagShow) {
-						if (flagWritePWN) {
-							theseInputs[i].value = p;
-							theseInputs[i].focus();
-							theseInputs[i].style.background = '#FF69B4';
-							wrotePWAtLeastOnceSecondChance = true;
-						}
-					}else {
-						theseInputs[i].value = p;
-						theseInputs[i].focus();
-						theseInputs[i].style.background = '#FF69B4';
-						wrotePWAtLeastOnceSecondChance = true;
+				if (flagShow) {
+					if (flagWritePWN) {
+						D.value = p;
+						D.focus();
+						D.style.background = '#FF69B4';
+						wrotePWAtLeastOnce = true;
 					}
+				}else {
+					D.value = p;
+					D.focus();
+					D.style.background = '#FF69B4';
+					wrotePWAtLeastOnce = true;
 				}
-			}
-			if (theseInputs[i].type == 'text') {
-				if (theseInputs[i].value || theseInputs[i].value != '') {
-					if (theseInputs[i].name.toUpperCase().indexOf('PASSWORD') != -1 || theseInputs[i].name.toUpperCase().indexOf('PASSWD') != -1) {
-						p = b64_sha1(theseInputs[i].value + ':' + domain).substr(0, 8) + '1a';
-						if (addOnes) {
-							p = p + '11';
-						}
-/*1 REMOVE-->  */
-					flagWritePWN = window.prompt(domain, p);
-/* <--REMOVE 2*/
-					if (flagShow) {
-						if (flagWritePWN) {
-							theseInputs[i].value = p;
-							theseInputs[i].focus();
-							theseInputs[i].style.background = '#FF69B4';
-							wrotePWAtLeastOnceSecondChance = true;
-						}
-					}else {
-						theseInputs[i].value = p;
-						theseInputs[i].focus();
-						theseInputs[i].style.background = '#FF69B4';
-						wrotePWAtLeastOnceSecondChance = true;
-					}
-					}
 				}
 			}
 		}
-	} else {
-		wrotePWAtLeastOnceSecondChance = true;
 	}
-	
-	if (wrotePWAtLeastOnceSecondChance == false) {
+			
+	if (wrotePWAtLeastOnce == false) {
 		var pwClear = window.prompt('enter pw in clear');
 		if (pwClear) {
 			p = b64_sha1(pwClear + ':' + domain).substr(0, 8) + '1a';
