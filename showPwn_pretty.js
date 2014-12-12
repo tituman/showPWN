@@ -142,13 +142,7 @@ function doIt() {
 	var flagShow = false;
 	var flagWritePWN = false;
     var flagTypeInDomain = false; 
-/*1 REMOVE--> */
-    var Domain = window.prompt('Enter your domain');
-	flagShow = true;	
-    if (Domain != null && Domain != '') {
-        flagTypeInDomain = true;
-		}
-/* <--REMOVE 2*/
+
     var host1 = window.location.hostname;
     if (host1 != null) {
         if (sld = host1.match(/([^.]+\.([a-z][a-z][a-z]|[a-z][a-z]\.[a-z][a-z]|[a-z][a-z]))$/i)) {
@@ -160,18 +154,22 @@ function doIt() {
                 window.alert('second match: ' + domain);
             } catch (err) {
                 domain = window.prompt('host not recognized, type in custom domain');
+				flagTypeInDomain = true;
             }
         }
     } else {
         domain = window.prompt('host not recognized, type in custom domain');
+		flagTypeInDomain = true;
 		}
-		/*1 do not remove--> */
-    if (flagTypeInDomain == true) {
-		if (Domain != null && Domain != '') {
-			domain = Domain;
+/*1 REMOVE--> */
+    var Domain = window.prompt('Enter your domain');
+	flagShow = true;	
+    if (Domain != null && Domain != '') {
+		domain = Domain;
+        flagTypeInDomain = true;
 		}
-    };
-		/* <--do not remove 2*/
+/* <--REMOVE 2*/
+
 	
 	/* add special iterations from above  
 	if (!flagTypeInDomain &&  */
