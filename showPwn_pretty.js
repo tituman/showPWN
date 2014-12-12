@@ -162,12 +162,14 @@ function doIt() {
 		flagTypeInDomain = true;
 		}
 /*1 REMOVE--> */
-    var Domain = window.prompt('Enter your domain');
-	flagShow = true;	
-    if (Domain != null && Domain != '') {
-		domain = Domain;
-        flagTypeInDomain = true;
+	if(!flagTypeInDomain){
+	    var Domain = window.prompt('Enter your domain');
+		flagShow = true;	
+		if (Domain != null && Domain != '') {
+			domain = Domain;
+			flagTypeInDomain = true;
 		}
+	}
 /* <--REMOVE 2*/
 
 	
