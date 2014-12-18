@@ -1,4 +1,6 @@
 javascript: var b64pad = '';
+var DEBUG = true;
+
 var chrsz = 8; 
 
 var inputArray = new Array();
@@ -161,16 +163,18 @@ function doIt() {
         domain = window.prompt('host not recognized, type in custom domain');
 		flagTypeInDomain = true;
 		}
-/*1 REMOVE--> */
-	if(!flagTypeInDomain){
-	    var Domain = window.prompt('Enter your domain');
-		flagShow = true;	
-		if (Domain != null && Domain != '') {
-			domain = Domain;
-			flagTypeInDomain = true;
+if(DEBUG) {
+
+		if(!flagTypeInDomain){
+			var Domain = window.prompt('Enter your domain');
+			flagShow = true;	
+			if (Domain != null && Domain != '') {
+				domain = Domain;
+				flagTypeInDomain = true;
+			}
 		}
-	}
-/* <--REMOVE 2*/
+}
+
 
 	
 	/* add special iterations from above  
@@ -205,9 +209,9 @@ function doIt() {
 				if (addOnes) {
 					p = p + '11';
 				}
-/*1 REMOVE-->  */
+if(DEBUG) {
 				flagWritePWN = window.prompt(domain, p);
-/* <--REMOVE 2*/
+}
 				if (flagShow) {
 					if (flagWritePWN) {
 						D.value = p;
@@ -230,9 +234,10 @@ function doIt() {
 					if (addOnes) {
 						p = p + '11';
 					}
-/*1 REMOVE-->  */
+if(DEBUG) {
 				flagWritePWN = window.prompt(domain, p);
-/* <--REMOVE 2*/
+}
+
 				if (flagShow) {
 					if (flagWritePWN) {
 						D.value = p;
