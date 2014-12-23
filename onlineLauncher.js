@@ -1,0 +1,1 @@
+javascript:(function(){var%20s=document.createElement('script');s.type='text/javascript';s.src='https://raw.githubusercontent.com/tituman/showPWN/master/showPwn.js?v='+parseInt(Math.random()*99999999);document.body.appendChild(s);})();
