@@ -37,7 +37,7 @@ Domain iterations:
 */
 
 var specialIterations = [
-{domains : ['fh-wels.at','fh-ooe.at','fhooe.at'], 	iter : 4, addOnes : true},
+{domains : ['fh-wels.at','fh-ooe.at','fhooe.at'], 	iter : 5, addOnes : true},
 {domains : ['cardcomplete.com'], 					iter : 1, addOnes : true},
 {domains : ['google.com', 'google'], 				iter : 2, addOnes : false},
 {domains : ['ebay'], 								iter : 1, addOnes : false},
