@@ -1,5 +1,5 @@
 javascript: var b64pad = '';
-var DEBUG = false;
+var DEBUG = true;
 
 var chrsz = 8; 
 
