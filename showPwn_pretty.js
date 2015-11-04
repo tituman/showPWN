@@ -6,7 +6,7 @@ var chrsz = 8;
 var inputArray = new Array();
 /*
 * v14
-* fh +1
+* fh +1 = 6
 *
 * v13:
 * ebay +1
@@ -40,7 +40,7 @@ Domain iterations:
 */
 
 var specialIterations = [
-{domains : ['fh-wels.at','fh-ooe.at','fhooe.at'], 	iter : 5, addOnes : true},
+{domains : ['fh-wels.at','fh-ooe.at','fhooe.at'], 	iter : 6, addOnes : true},
 {domains : ['cardcomplete.com'], 					iter : 1, addOnes : true},
 {domains : ['google.com', 'google'], 				iter : 2, addOnes : false},
 {domains : ['ebay'], 								iter : 1, addOnes : false},
