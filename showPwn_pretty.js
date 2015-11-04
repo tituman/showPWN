@@ -6,6 +6,10 @@ var chrsz = 8;
 var inputArray = new Array();
 /*
 * v14
+<<<<<<< HEAD
+=======
+* fh +1
+>>>>>>> origin/gh-pages
 *
 * v13:
 * ebay +1
