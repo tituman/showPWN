@@ -5,6 +5,8 @@ var chrsz = 8;
 
 var inputArray = new Array();
 /*
+* v14
+*
 * v13:
 * ebay +1
 * 
