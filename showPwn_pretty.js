@@ -45,7 +45,7 @@ var specialIterations = [
 {domains : ['google.com', 'google'], 				iter : 2, addOnes : false},
 {domains : ['ebay'], 								iter : 1, addOnes : false},
 {domains : ['evernote.com'], 						iter : 1, addOnes : false},
-{domains:['miles-and-more.com', 'worldshop.eu'],	iter : 1, addOnes : false}
+{domains : ['miles-and-more.com', 'worldshop.eu'],	iter : 0, addOnes : false}
 ];
 
 
@@ -189,7 +189,11 @@ if(DEBUG) {
 	for (i = 0; i < specialIterations.length; i++) {
 		for (j = 0; j < specialIterations[i].domains.length; j++) {
 			if ((domain.indexOf(specialIterations[i].domains[j]) != -1)) {
-				domain = specialIterations[i].domains[0] + specialIterations[i].iter;
+				var iter = '';
+				if (specialIterations[i].iter > 0) { 
+					iter  = specialIterations[i].iter; 
+				}
+				domain = specialIterations[i].domains[0] + iter;
 				var addOnes = specialIterations[i].addOnes;
 			}
 		}
