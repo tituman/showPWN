@@ -5,6 +5,9 @@ var chrsz = 8;
 
 var inputArray = new Array();
 /*
+* v16
+* fh +1 = 7
+*
 * v15
 * pearl.at -> pearl.de
 *
@@ -43,7 +46,7 @@ Domain iterations:
 */
 
 var specialIterations = [
-{domains : ['fh-wels.at','fh-ooe.at','fhooe.at'], 	iter : 6, addOnes : true},
+{domains : ['fh-wels.at','fh-ooe.at','fhooe.at'], 	iter : 7, addOnes : true},
 {domains : ['cardcomplete.com'], 					iter : 1, addOnes : true},
 {domains : ['google.com', 'google'], 				iter : 2, addOnes : false},
 {domains : ['ebay'], 								iter : 1, addOnes : false},
