@@ -5,6 +5,9 @@ var chrsz = 8;
 
 var inputArray = new Array();
 /*
+* v18
+* added cloudbleed
+*
 * v17
 * fh +1 = 8
 *
@@ -55,7 +58,8 @@ var specialIterations = [
 {domains : ['ebay'], 								iter : 1, addOnes : false},
 {domains : ['evernote.com'], 						iter : 1, addOnes : false},
 {domains : ['pearl.de', 'pearl.at'], 				iter : 0, addOnes : false},
-{domains : ['miles-and-more.com', 'worldshop.eu'],	iter : 0, addOnes : false}
+{domains : ['miles-and-more.com', 'worldshop.eu'],	iter : 0, addOnes : false},
+{domains : ['shroomery'],							iter : 0, addOnes : false}
 ];
 
 
