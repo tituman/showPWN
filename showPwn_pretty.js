@@ -7,7 +7,7 @@ var inputArray = new Array();
 /*
 * v19
 * fh + 1 = 9
-* live = 0
+* live = 1
 *
 * v18
 * added cloudbleed
@@ -64,7 +64,7 @@ var specialIterations = [
 {domains : ['pearl.de', 'pearl.at'], 				iter : 0, addOnes : false},
 {domains : ['miles-and-more.com', 'worldshop.eu'],	iter : 0, addOnes : false},
 {domains : ['shroomery'],							iter : 0, addOnes : false},
-{domains : ['live'],								iter : 0, addOnes : false}
+{domains : ['live'],								iter : 1, addOnes : false}
 ];
 
 
