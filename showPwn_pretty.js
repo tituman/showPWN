@@ -69,7 +69,7 @@ var specialIterations = [
 {domains : ['miles-and-more.com', 'worldshop.eu'],	iter : 0, addOnes : false},
 {domains : ['shroomery'],							iter : 0, addOnes : false},
 {domains : ['pinterest'],							iter : 0, addOnes : false},
-{domains : ['live'],								iter : 1, addOnes : false}
+{domains : ['xlive'],								iter : 2, addOnes : false}
 ];
 
 
