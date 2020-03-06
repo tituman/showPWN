@@ -5,6 +5,8 @@ var chrsz = 8;
 
 var inputArray = new Array();
 /*
+* v21
+* added ts.today and novel domains
 *
 * v20
 * pinterest
@@ -69,7 +71,8 @@ var specialIterations = [
 {domains : ['miles-and-more.com', 'worldshop.eu'],	iter : 0, addOnes : false},
 {domains : ['shroomery'],							iter : 0, addOnes : false},
 {domains : ['pinterest'],							iter : 0, addOnes : false},
-{domains : ['xlive'],								iter : 2, addOnes : false}
+{domains : ['xlive'],								iter : 2, addOnes : false},
+{domains : ['ts.today'],							iter : 0, addOnes : false}
 ];
 
 
@@ -175,29 +178,49 @@ function doIt() {
 	var flagShow = false;
 	var flagWritePWN = false;
     var flagTypeInDomain = false; 
+    var p; /* string containing calculated password */
+    var i = 0, j = 0; /* iterators */ 
 
     var host1 = window.location.hostname;
     if (host1 != null) {
         if (sld = host1.match(/([^.]+\.([a-z][a-z][a-z]|[a-z][a-z]\.[a-z][a-z]|[a-z][a-z]))$/i)) {
             domain = sld[0];
-				
-        } else {
-            try {
+		
+		
+		/* case when sld is too novel and is not found with the above regexp, 
+		but is so simple that it was added in the iterations list
+		ugly patch but easier than finding out every single possible sld
+		*/
+		} else {
+loopOuter:
+			for (i = 0; i < specialIterations.length; i++) {
+				domain = specialIterations[i].domains[0];
+				for (j = 0; j < specialIterations[i].domains.length; j++) {
+					if ((host1.indexOf(specialIterations[i].domains[j]) != -1)) {/* found domain, break from both iters */
+						break loopOuter;
+					}
+				}
+				domain = '';
+			}	
+        } 
+		if (domain == '') {
+            try { /* second match strategy */
                 domain = host1.match(/([^.]+\.[^.]+\.[a-z][a-z])$/i)[0];
                 window.alert('second match: ' + domain);
             } catch (err) {
-                domain = window.prompt('host not recognized, type in custom domain');
+                domain = window.prompt('host not recognized (second match failed), type in custom domain');
 				flagTypeInDomain = true;
             }
         }
-    } else {
+	/* host is null, or not in list of domains, or not matched with second match */
+    } else { 
         domain = window.prompt('host not recognized, type in custom domain');
 		flagTypeInDomain = true;
 		}
 if(DEBUG) {
 
-		if(!flagTypeInDomain){
-			var Domain = window.prompt('Enter your domain');
+		if(DEBUG || flagTypeInDomain){
+			var Domain = window.prompt('Enter your domain', domain);
 			flagShow = true;	
 			if (Domain != null && Domain != '') {
 				domain = Domain;
@@ -224,8 +247,6 @@ if(DEBUG) {
 
 	}
 				
-    var p; /* string containing calculated password */
-    var i = 0, j = 0; /* iterators */ 
 
 	/* find interesting elements */
 	traverseFrames(document);
