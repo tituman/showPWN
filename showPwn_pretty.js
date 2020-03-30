@@ -71,7 +71,7 @@ var specialIterations = [
 {domains : ['miles-and-more.com', 'worldshop.eu'],	iter : 0, addOnes : false},
 {domains : ['shroomery'],							iter : 0, addOnes : false},
 {domains : ['pinterest'],							iter : 0, addOnes : false},
-{domains : ['xlive'],								iter : 2, addOnes : false},
+{domains : ['live'],								iter : 2, addOnes : false}, /*for stupid personal email*/
 {domains : ['ts.today'],							iter : 0, addOnes : false}
 ];
 
