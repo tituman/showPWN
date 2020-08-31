@@ -4,7 +4,10 @@ var DEBUG = true;
 var chrsz = 8; 
 
 var inputArray = new Array();
-/*
+/*\
+* v23
+* added quora
+*
 * v21
 * added ts.today and novel domains
 *
@@ -72,6 +75,7 @@ var specialIterations = [
 {domains : ['shroomery'],							iter : 0, addOnes : false},
 {domains : ['pinterest'],							iter : 0, addOnes : false},
 {domains : ['live'],								iter : 4, addOnes : false}, /*for stupid personal email*/
+{domains : ['quora'],								iter : 0, addOnes : false},
 {domains : ['ts.today'],							iter : 0, addOnes : false}
 ];
 
