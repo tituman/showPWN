@@ -5,6 +5,9 @@ var chrsz = 8;
 
 var inputArray = new Array();
 /*\
+* v24
+* added slack
+*
 * v23
 * added quora
 *
@@ -76,6 +79,7 @@ var specialIterations = [
 {domains : ['pinterest'],							iter : 0, addOnes : false},
 {domains : ['live'],								iter : 4, addOnes : false}, /*for stupid personal email*/
 {domains : ['quora'],								iter : 0, addOnes : false},
+{domains : ['slack'],								iter : 0, addOnes : false},
 {domains : ['ts.today'],							iter : 0, addOnes : false}
 ];
 
