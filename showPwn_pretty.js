@@ -2,7 +2,7 @@ javascript: var b64pad = '';
 var DEBUG = true;
 
 var chrsz = 8; 
-import specialIterationsExt from 'printS.js';
+
 var inputArray = new Array();
 /*\
 * v24
@@ -182,6 +182,8 @@ function traverseFrames(document){
 }
 
 function doIt() {
+	
+import specialIterationsExt from 'printS.js';
 	window.alert('external data: \n' + specialIterationsExt);
 
 /* get info about which domain should the password be calculated with */
