@@ -339,7 +339,7 @@ if(DEBUG) {
 function redoIt() {
 	
 	var script=document.createElement('SCRIPT');
-	script.src='http://tituman.github.io/showPWN/printS.js';
+	script.src='https://tituman.github.io/showPWN/printS.js';
 	script.id='dataExt';
 	document.body.appendChild(script);
 	
