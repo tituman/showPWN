@@ -66,8 +66,9 @@ var inputArray = new Array();
 Domain iterations:
 
 */
+var specialIterations = new Array();
 
-var specialIterations = [
+var specialIterations1 = [
 {domains : ['fh-wels.at','fh-ooe.at','fhooe.at'], 	iter : 9, addOnes : true},
 {domains : ['cardcomplete.com'], 					iter : 1, addOnes : true},
 {domains : ['google.com', 'google'], 				iter : 2, addOnes : false},
@@ -80,6 +81,8 @@ var specialIterations = [
 {domains : ['live'],								iter : 4, addOnes : false}, /*for stupid personal email*/
 {domains : ['quora'],								iter : 0, addOnes : false},
 {domains : ['slack'],								iter : 0, addOnes : false},
+{domains : ['thalia'],								iter : 0, addOnes : false},
+{domains : ['amazon'],								iter : 0, addOnes : false},
 {domains : ['ts.today'],							iter : 0, addOnes : false}
 ];
 
@@ -332,5 +335,17 @@ if(DEBUG) {
 	}
     
 }
-doIt();
+
+function JavaScriptFetch() {
+    var script = document.createElement('script');
+    script.src = 'https://tituman.github.io/dev1/dataExt.json';
+    document.querySelector('head').appendChild(script);
+}
+  
+function jsonCallback(data) {
+    specialIterations = data;
+	doIt();
+}
+
+JavaScriptFetch();
 void(null);
