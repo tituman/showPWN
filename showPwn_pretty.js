@@ -182,9 +182,6 @@ function traverseFrames(document){
 }
 
 function doIt() {
-	
-//import specialIterationsExt from 'printS.js';
-window.alert('external data: \n' + specialIterationsExt);
 
 /* get info about which domain should the password be calculated with */
     var domain = '';
@@ -337,5 +334,25 @@ if(DEBUG) {
 	}
     
 }
-doIt();
+
+function readTextFile(file, callback) {
+    var rawFile = new XMLHttpRequest();
+    rawFile.overrideMimeType("text/javascript");
+    rawFile.open("GET", file, true);
+    rawFile.onreadystatechange = function() {
+        if (rawFile.readyState === 4 && rawFile.status == "200") {
+            callback(rawFile.responseText);
+        }
+    }
+    rawFile.send(null);
+}
+function redoIt() {
+	//usage:
+	readTextFile("printS.js", function(text){
+		var data = JSON.parse(text);
+		console.log(data);
+	});
+}
+//doIt();
+redoIt();
 void(null);
