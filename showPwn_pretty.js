@@ -2,7 +2,7 @@ javascript: var b64pad = '';
 var DEBUG = true;
 
 var chrsz = 8; 
-
+import specialIterationsExt from 'printS.js';
 var inputArray = new Array();
 /*\
 * v24
@@ -80,6 +80,8 @@ var specialIterations = [
 {domains : ['live'],								iter : 4, addOnes : false}, /*for stupid personal email*/
 {domains : ['quora'],								iter : 0, addOnes : false},
 {domains : ['slack'],								iter : 0, addOnes : false},
+{domains : ['thalia'],								iter : 0, addOnes : false},
+{domains : ['amazon'],								iter : 0, addOnes : false},
 {domains : ['ts.today'],							iter : 0, addOnes : false}
 ];
 
@@ -180,6 +182,7 @@ function traverseFrames(document){
 }
 
 function doIt() {
+	window.alert('external data: \n' + specialIterationsExt);
 
 /* get info about which domain should the password be calculated with */
     var domain = '';
