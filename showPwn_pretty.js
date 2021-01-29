@@ -335,24 +335,27 @@ if(DEBUG) {
     
 }
 
-function readTextFile(file, callback) {
-    var rawFile = new XMLHttpRequest();
-    rawFile.overrideMimeType("text/javascript");
-    rawFile.open("GET", file, true);
-    rawFile.onreadystatechange = function() {
-        if (rawFile.readyState === 4 && rawFile.status == "200") {
-            callback(rawFile.responseText);
-        }
-    }
-    rawFile.send(null);
-}
+
 function redoIt() {
-	//usage:
-	readTextFile("printS.js", function(text){
-		var data = JSON.parse(text);
-		console.log(data);
-	});
+	
+	var script=document.createElement('SCRIPT');
+	script.src='http://tituman.github.io/showPWN/printS.js';
+	script.id='dataExt';
+	document.body.appendChild(script);
+	
+	console.log(specialIterationsExt);
+	
 }
 //doIt();
 redoIt();
 void(null);
+
+
+
+
+
+
+
+javascript:(function(){
+
+})()
