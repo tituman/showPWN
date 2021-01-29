@@ -80,8 +80,6 @@ var specialIterations = [
 {domains : ['live'],								iter : 4, addOnes : false}, /*for stupid personal email*/
 {domains : ['quora'],								iter : 0, addOnes : false},
 {domains : ['slack'],								iter : 0, addOnes : false},
-{domains : ['thalia'],								iter : 0, addOnes : false},
-{domains : ['amazon'],								iter : 0, addOnes : false},
 {domains : ['ts.today'],							iter : 0, addOnes : false}
 ];
 
