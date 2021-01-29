@@ -183,7 +183,7 @@ function traverseFrames(document){
 
 function doIt() {
 	
-import specialIterationsExt from 'printS.js';
+//import specialIterationsExt from 'printS.js';
 	window.alert('external data: \n' + specialIterationsExt);
 
 /* get info about which domain should the password be calculated with */
