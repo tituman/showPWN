@@ -332,28 +332,5 @@ if(DEBUG) {
 	}
     
 }
-
-
-function redoIt() {
-	
-	var script=document.createElement('SCRIPT');
-	script.src='https://tituman.github.io/showPWN/printS.js';
-	script.id='dataExt';
-	document.body.appendChild(script);
-	
-	console.log(specialIterationsExt);
-	
-}
-//doIt();
-redoIt();
+doIt();
 void(null);
-
-
-
-
-
-
-
-javascript:(function(){
-
-})()
