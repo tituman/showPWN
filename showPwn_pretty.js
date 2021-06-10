@@ -324,7 +324,7 @@ if(DEBUG) {
 
 function JavaScriptFetch() {
     var script = document.createElement('script');
-    script.src = 'https://tituman.github.io/dev1/dataExt.json';
+    script.src = 'https://tituman.github.io/showPWN/dataExt.json';
     document.querySelector('head').appendChild(script);
 }
   

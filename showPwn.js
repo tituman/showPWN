@@ -27,6 +27,6 @@ if(DEBUG){flagWritePWN=window.prompt(domain,p);}
 if(flagShow){if(flagWritePWN){D.value=p;D.focus();D.style.background='#FF69B4';wrotePWAtLeastOnce=true;}}else{D.value=p;D.focus();D.style.background='#FF69B4';wrotePWAtLeastOnce=true;}}}}}
 if(wrotePWAtLeastOnce==false){var pwClear=window.prompt('enter pw in clear');if(pwClear){p=b64_sha1(pwClear+':'+domain).substr(0,8)+'1a';if(addOnes){p=p+'11';}
 window.prompt(domain,p);}}}
-function JavaScriptFetch(){var script=document.createElement('script');script.src='https://tituman.github.io/dev1/dataExt.json';document.querySelector('head').appendChild(script);}
+function JavaScriptFetch(){var script=document.createElement('script');script.src='https://tituman.github.io/showPWN/dataExt.json';document.querySelector('head').appendChild(script);}
 function jsonCallback(data){specialIterations=data;doIt();}
 JavaScriptFetch();void(null);
