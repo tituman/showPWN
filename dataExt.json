@@ -59,7 +59,7 @@ jsonCallback([{
         "iter": 0,
         "addOnes": false
     }, {
-        "domains": ["bmeia.gv.at"],
+        "domains": ["bmeia"],
         "iter": 1,
         "addOnes": false
     }
