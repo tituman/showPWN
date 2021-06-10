@@ -58,5 +58,9 @@ jsonCallback([{
         "domains": ["ts.today"],
         "iter": 0,
         "addOnes": false
+    }, {
+        "domains": ["bmeia.gv.at"],
+        "iter": 0,
+        "addOnes": false
     }
 ])
