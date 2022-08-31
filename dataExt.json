@@ -59,6 +59,10 @@ jsonCallback([{
         "iter": 0,
         "addOnes": false
     }, {
+        "domains": ["ganttproject.cloud"],
+        "iter": 0,
+        "addOnes": false
+    }, {
         "domains": ["bmeia.gv.at"],
         "iter": 1,
         "addOnes": false
