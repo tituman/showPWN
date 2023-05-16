@@ -7,8 +7,8 @@ jsonCallback([{
         "iter": 1,
         "addOnes": true
     }, {
-        "domains": ["google.com", "google"],
-        "iter": 2,
+        "domains": ["google.com", "google", "gmail"],
+        "iter": 3,
         "addOnes": false
     }, {
         "domains": ["ebay"],
@@ -60,6 +60,10 @@ jsonCallback([{
         "addOnes": false
     }, {
         "domains": ["ganttproject.cloud"],
+        "iter": 0,
+        "addOnes": false
+    }, {
+        "domains": ["protonmail.com", "proton.me"],
         "iter": 0,
         "addOnes": false
     }, {
