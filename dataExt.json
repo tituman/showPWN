@@ -8,7 +8,7 @@ jsonCallback([{
         "addOnes": true
     }, {
         "domains": ["google.com", "google", "gmail"],
-        "iter": 3,
+        "iter": 4,
         "addOnes": false
     }, {
         "domains": ["ebay"],
