@@ -67,6 +67,10 @@ jsonCallback([{
         "iter": 0,
         "addOnes": false
     }, {
+        "domains": ["airbnb.com"],
+        "iter": 2,
+        "addOnes": false
+    }, {
         "domains": ["bmeia.gv.at"],
         "iter": 1,
         "addOnes": false
